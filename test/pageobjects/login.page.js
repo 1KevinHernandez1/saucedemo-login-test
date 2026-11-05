@@ -1,6 +1,7 @@
 class LoginPage {
 
-    usernameVariable = 'standard_user';
+    users = ['standard_user', 'problem_user', 'error_user'];
+    
     passwordVariable = 'secret_sauce';
 
     get usernameInput() { return $('#user-name'); }
@@ -8,7 +9,7 @@ class LoginPage {
     get loginButton() { return $('#login-button'); }
 
     async performLogin() {
-        await this.usernameInput.setValue(this.usernameVariable);
+        await this.usernameInput.setValue(username);
         await this.passwordInput.setValue(this.passwordVariable);
         await this.loginButton.click();
     }
