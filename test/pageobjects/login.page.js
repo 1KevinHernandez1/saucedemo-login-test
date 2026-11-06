@@ -1,18 +1,26 @@
 class LoginPage {
+    // Credentials object containing the required users array and password
+    credentials = {
+        users: ['problem_user', 'error_user', 'visual_user', 'standard_user'],
+        password: 'secret_sauce'
+    };
 
-    users = ['standard_user', 'problem_user', 'error_user'];
-    
-    passwordVariable = 'secret_sauce';
+    // Selectors are individual arrow functions
+    usernameInput = () => $(`#user-name`);
+    passwordInput = () => $(`#password`);
+    loginButton = () => $(`#login-button`);
 
-    get usernameInput() { return $('#user-name'); }
-    get passwordInput() { return $('#password'); }
-    get loginButton() { return $('#login-button'); }
+    // Method to open the login page
+    open = () => {
+        browser.url('https://www.saucedemo.com/');
+    };
 
-    async performLogin() {
-        await this.usernameInput.setValue(username);
-        await this.passwordInput.setValue(this.passwordVariable);
-        await this.loginButton.click();
-    }
+    // Method to initiate login
+    login = (username, password) => {
+        this.usernameInput().setValue(username);
+        this.passwordInput().setValue(password);
+        this.loginButton().click();
+    };
 }
 
 export default new LoginPage();

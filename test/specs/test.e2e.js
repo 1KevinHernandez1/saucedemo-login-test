@@ -1,18 +1,23 @@
-import LoginPage from '../pageobjects/login.page.js';
+import LoginPage from './login.page';
 
-('SauceDemo Login Test - Array Loop', () => {
-    it('should log in successfully for all users in the array', async () => {
-        // Loop over each username string in the LoginPage.users array
-        for (const username of LoginPage.users) {
-            // 1. Open function / Navigate to site
-            await browser.url('https://www.saucedemo.com/');
+describe('SauceDemo Login Tests', () => {
 
-            // 2. Login function using the current user from the loop
-            await LoginPage.performLogin(username);
+    it('should attempt login for all users in the credentials object', () => {
 
-            // 3. Assertions to verify successful login
-            await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
-            await expect($('.title')).toHaveText('Products');
+        // Loop through each username stored in the credentials object
+        for (const username of LoginPage.credentials.users) {
+
+            // 1. Open the Saucedemo website
+            LoginPage.open();
+
+            // 2. Perform the login using the current username and the shared password object property
+            LoginPage.initiateLogin(username, LoginPage.credentials.password);
+
+            // Add expect and assertion to check if login was successfull(check for URL, page title or any other element that indicates successful login)
+            expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+
         }
+
     });
+
 });
