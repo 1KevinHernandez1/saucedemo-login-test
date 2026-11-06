@@ -10,12 +10,12 @@ class LoginPage {
     passwordInput = () => $(`#password`);
     loginButton = () => $(`#login-button`);
 
-    // Method to open the login page
+    // How to open the login page
     open = () => {
         browser.url('https://www.saucedemo.com/');
     };
 
-    // Method to initiate login
+    // How to initiate login
     login = (username, password) => {
         this.usernameInput().setValue(username);
         this.passwordInput().setValue(password);
