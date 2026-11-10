@@ -1,6 +1,6 @@
 {
-  "name": "webdriverio-tests",
-  "version": "0.0.0",
+  "name": "login-saucedemo-test1",
+  "version": "1.0.0",
   "private": true,
   "license": "ISC",
   "type": "module",
@@ -10,6 +10,7 @@
     "@wdio/spec-reporter": "^10.1.0"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.js"
+    "test": "npx wdio run ./wdio.conf.js",
+    "wdio": "npx wdio run ./wdio.conf.js"
   }
 }

@@ -1,30 +1,23 @@
 class LoginPage {
-    // Credentials object containing the required users array and password
-    credentials = {
-        users: ['standard_user', 'problem_user', 'error_user', 'visual_user'],
-        password: 'secret_sauce'
-    };
+    users = ['standard_user', 'problem_user', 'error_user', 'visual_user'];
+    password = 'secret_sauce';
 
-    // Selectors defined inside the Page Object
-    usernameInput = () => $('#user-name');
-    passwordInput = () => $('#password');
-    loginButton = () => $('#login-button');
-    
-    // Add the element selector for your test assertion here
-    // Replace '.title' with whichever selector is in use for verifying successful login
-    headerTitle = () => $('.title'); 
+    // Getters for element selectors
+    get usernameInput () { return $('#user-name'); }
+    get passwordInput () { return $('#password'); }
+    get loginButton () { return $('#login-button'); }
+    get headerTitle () { return $('.title'); }
 
-    // How to open the login page
-    open = () => {
-        browser.url('https://www.saucedemo.com/');
-    };
+    async open() {
+        return browser.url('https://www.saucedemo.com/');
+    }
 
-    // How to initiate login
-    login = (username, password) => {
-        this.usernameInput().setValue(username);
-        this.passwordInput().setValue(password);
-        this.loginButton().click();
-    };
+    // REMOVE parentheses from this.usernameInput, this.passwordInput, and this.loginButton
+    async login(username, password) {
+        await this.usernameInput.setValue(username);
+        await this.passwordInput.setValue(password);
+        await this.loginButton.click();
+    }
 }
 
 export default new LoginPage();
